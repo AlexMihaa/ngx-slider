@@ -78,7 +78,7 @@
     "rimraf": "^2.6.2",
     "scss-bundle": "^2.4.0",
     "ts-node": "~7.0.0",
-    "tsickle": "~0.32.1",
+    "tsickle": "^0.34.0",
     "tslint": "~5.9.1",
     "typedoc": "^0.15.8",
     "typescript": "^2.7.0",
