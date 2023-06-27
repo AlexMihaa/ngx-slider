@@ -226,55 +226,55 @@ export class SliderComponent implements OnInit, AfterViewInit, OnChanges, OnDest
   /* Slider DOM elements */
 
   // Left selection bar outside two handles
-  @ViewChild('leftOuterSelectionBar', {read: SliderElementDirective})
+  @ViewChild('leftOuterSelectionBar', {static: false, read: SliderElementDirective})
   private leftOuterSelectionBarElement: SliderElementDirective;
 
   // Right selection bar outside two handles
-  @ViewChild('rightOuterSelectionBar', {read: SliderElementDirective})
+  @ViewChild('rightOuterSelectionBar', {static: false, read: SliderElementDirective})
   private rightOuterSelectionBarElement: SliderElementDirective;
 
   // The whole slider bar
-  @ViewChild('fullBar', {read: SliderElementDirective})
+  @ViewChild('fullBar', {static: false, read: SliderElementDirective})
   private fullBarElement: SliderElementDirective;
 
   // Highlight between two handles
-  @ViewChild('selectionBar', {read: SliderElementDirective})
+  @ViewChild('selectionBar', {static: false, read: SliderElementDirective})
   private selectionBarElement: SliderElementDirective;
 
   // Left slider handle
-  @ViewChild('minHandle', {read: SliderHandleDirective})
+  @ViewChild('minHandle', {static: false, read: SliderHandleDirective})
   private minHandleElement: SliderHandleDirective;
 
   // Right slider handle
-  @ViewChild('maxHandle', {read: SliderHandleDirective})
+  @ViewChild('maxHandle', {static: false, read: SliderHandleDirective})
   private maxHandleElement: SliderHandleDirective;
 
   // Floor label
-  @ViewChild('floorLabel', {read: SliderLabelDirective})
+  @ViewChild('floorLabel', {static: false, read: SliderLabelDirective})
   private floorLabelElement: SliderLabelDirective;
 
   // Ceiling label
-  @ViewChild('ceilLabel', {read: SliderLabelDirective})
+  @ViewChild('ceilLabel', {static: false, read: SliderLabelDirective})
   private ceilLabelElement: SliderLabelDirective;
 
   // Label above the low value
-  @ViewChild('minHandleLabel', {read: SliderLabelDirective})
+  @ViewChild('minHandleLabel', {static: false, read: SliderLabelDirective})
   private minHandleLabelElement: SliderLabelDirective;
 
   // Label above the high value
-  @ViewChild('maxHandleLabel', {read: SliderLabelDirective})
+  @ViewChild('maxHandleLabel', {static: false, read: SliderLabelDirective})
   private maxHandleLabelElement: SliderLabelDirective;
 
   // Combined label
-  @ViewChild('combinedLabel', {read: SliderLabelDirective})
+  @ViewChild('combinedLabel', {static: false, read: SliderLabelDirective})
   private combinedLabelElement: SliderLabelDirective;
 
   // The ticks
-  @ViewChild('ticksElement', {read: SliderElementDirective})
+  @ViewChild('ticksElement', {static: false, read: SliderElementDirective})
   private ticksElement: SliderElementDirective;
 
   // Optional custom template for displaying tooltips
-  @ContentChild('tooltipTemplate')
+  @ContentChild('tooltipTemplate', {static: false, read: TemplateRef})
   public tooltipTemplate: TemplateRef<any>;
 
   // Host element class bindings
