@@ -35,7 +35,8 @@ function generateTypedocDocs(typedocDocsDir) {
   const apiDocsReadmeFile = path.resolve(__dirname, '../typedoc-theme/README.md');
   utils.copyReadmeMd(apiDocsReadmeFile);
 
-  const app = new typedoc.Application({
+  const app = new typedoc.Application();
+  app.bootstrap({
     module: 'commonjs',
     target: 'es6',
     includeDeclarations: false,
