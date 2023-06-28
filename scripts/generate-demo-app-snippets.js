@@ -25,17 +25,17 @@ function generateTemplate(templateFile, snippetsDir) {
   const sectionIdTemplateFileContent = fs.readFileSync(path.resolve(snippetsDir, sectionIdTemplateFile), { encoding: 'utf8' }).trim();
 
   const templateFileContent = fs.readFileSync(path.resolve(snippetsDir, templateFile), { encoding: 'utf8' });
-  const templateTabHtml = tabHtml(path.basename(outputTemplateFile), templateFileContent, 'html');
+  const templateTabHtml = tabHtml(path.basename(outputTemplateFile), templateFileContent, 'html', 2);
 
   let codeFileContent = fs.readFileSync(path.resolve(snippetsDir, codeFile), { encoding: 'utf8' });
   // The only modification to the source file is to remove the @local prefix from slider import
   codeFileContent = codeFileContent.replace(/@local\/ngx-slider/g, "@angular-slider/ngx-slider");
-  const codeTabHtml = tabHtml(path.basename(codeFile), codeFileContent, 'typescript');
+  const codeTabHtml = tabHtml(path.basename(codeFile), codeFileContent, 'typescript', 1);
 
   let styleTabHtml = '';
   if (fs.existsSync(path.resolve(snippetsDir, styleFile))) {
     const styleFileContent = fs.readFileSync(path.resolve(snippetsDir, styleFile), { encoding: 'utf8' });
-    styleTabHtml = tabHtml(path.basename(styleFile), styleFileContent, 'scss');
+    styleTabHtml = tabHtml(path.basename(styleFile), styleFileContent, 'scss', 3);
   }
 
   const outputHtmlFileContent = `
@@ -48,13 +48,15 @@ function generateTemplate(templateFile, snippetsDir) {
       ${templateFileContent}
     </div>
 
-    <ngb-tabset class="snippet-code-tabset">
+    <ul ngbNav #nav="ngbNav" class="nav-tabs snippet-code-tabset">
       ${codeTabHtml}
 
       ${templateTabHtml}
 
       ${styleTabHtml}
-    </ngb-tabset>
+    </ul>
+
+    <div [ngbNavOutlet]="nav"></div>
   </div>
 </div>`;
 
@@ -73,12 +75,13 @@ function escapeBraces(html) {
 }
 
 /** Common HTML template for tab */
-function tabHtml(tabTitle, codeContent, codeLang) {
-  return `<ngb-tab title="${escape(tabTitle)}">
-      <ng-template ngbTabContent>
+function tabHtml(tabTitle, codeContent, codeLang, index) {
+  return `<li ngbNavItem>
+      <a ngbNavLink>${escape(tabTitle)}</a>
+      <ng-template ngbNavContent>
         <pre class="language-${codeLang}"><code class="language-${codeLang}">${escapeBraces(highlight(codeContent, codeLang))}</code></pre>
       </ng-template>
-    </ngb-tab>`;
+    </li>`;
 }
 
 
