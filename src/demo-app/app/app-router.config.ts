@@ -37,6 +37,7 @@ export const routerConfig: Routes = [
 ];
 
 export const routerOptions: ExtraOptions = {
-  useHash: false,
-  anchorScrolling: 'enabled'
+    useHash: false,
+    anchorScrolling: 'enabled',
+    relativeLinkResolution: 'legacy'
 };
