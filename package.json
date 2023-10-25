@@ -1,6 +1,6 @@
 {
-  "name": "@angular-slider/ngx-slider",
-  "version": "2.0.4",
+  "name": "ngx-slider-up",
+  "version": "3",
   "private": true,
   "description": "Self-contained, mobile friendly slider component for Angular 5+ based on angularjs-slider",
   "keywords": [
@@ -11,7 +11,7 @@
     "ng",
     "ngx"
   ],
-  "author": "Piotr Dziwinski",
+  "author": "Alex Miha",
   "license": "MIT",
   "repository": {
     "type": "git",
